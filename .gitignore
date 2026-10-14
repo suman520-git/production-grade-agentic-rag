@@ -1,0 +1,46 @@
+venv/
+__pycache__/
+*.pyc
+.env
+
+scrap.txt
+
+
+.env
+.env.*
+!.env.example
+venv/
+__pycache__/
+*.pyc
+
+# Secrets
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+*.pem
+*.key
+
+# Python environments and caches
+venv/
+.venv/
+env/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Editor files
+.vscode/
+.idea/
+
+# Local logs, backups, and archives
+logs/
+backups/
+*.log
+*.zip
+docker-compose.before-full-app.yml
+
+# Raw local evaluation runs
+evaluations/

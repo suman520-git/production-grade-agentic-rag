@@ -1,0 +1,854 @@
+{
+  "dataset_version": 1,
+  "description": "Baseline evaluation for policy answers, citations, abstention, metadata filters, and greeting routing.",
+  "reference_documents": [
+    {
+      "document_id": 1,
+      "title": "Annual Leave Policy",
+      "category": "hr",
+      "content": "Employees receive 20 working days of annual leave each year.",
+      "content_sha256": "a95f8f24af4e5a855f8654895a0b36fde5d3ec8d6f63a8d6582dc1b150bff758"
+    },
+    {
+      "document_id": 2,
+      "title": "Remote Work Policy",
+      "category": "hr",
+      "content": "Employees may work remotely two days per week with manager approval.",
+      "content_sha256": "82be79ba58cc8eeb8058a208b24110fa76fc2996135c855d708c442df5f09bac"
+    },
+    {
+      "document_id": 6,
+      "title": "Training Budget Policy",
+      "category": "hr",
+      "content": "Employees may claim up to INR 10000 per year for approved training courses. Manager approval is required before enrollment.",
+      "content_sha256": "77f600f5830660d425bda039ab8441fb9d02f869c6d45e58f31de7f8e01d334c"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q001",
+      "group": "annual_leave",
+      "request": {
+        "question": "How many annual leave days do employees receive?",
+        "top_k": 5,
+        "category": "hr",
+        "document_id": null
+      },
+      "expected_status": "answered",
+      "expected_facts": [
+        "Employees receive 20 working days of annual leave each year."
+      ],
+      "relevant_document_ids": [
+        1
+      ],
+      "requires_citations": true
+    },
+    {
+      "id": "q002",
+      "group": "annual_leave",
+      "request": {
+        "question": "What is the yearly annual leave entitlement?",
+        "top_k": 5,
+        "category": "hr",
+        "document_id": null
+      },
+      "expected_status": "answered",
+      "expected_facts": [
+        "Employees receive 20 working days of annual leave each year."
+      ],
+      "relevant_document_ids": [
+        1
+      ],
+      "requires_citations": true
+    },
+    {
+      "id": "q003",
+      "group": "annual_leave",
+      "request": {
+        "question": "How much annual leave does an employee get each year?",
+        "top_k": 5,
+        "category": "hr",
+        "document_id": null
+      },
+      "expected_status": "answered",
+      "expected_facts": [
+        "Employees receive 20 working days of annual leave each year."
+      ],
+      "relevant_document_ids": [
+        1
+      ],
+      "requires_citations": true
+    },
+    {
+      "id": "q004",
+      "group": "annual_leave",
+      "request": {
+        "question": "Does the annual leave allowance use working days?",
+        "top_k": 5,
+        "category": "hr",
+        "document_id": null
+      },
+      "expected_status": "answered",
+      "expected_facts": [
+        "Employees receive 20 working days of annual leave each year."
+      ],
+      "relevant_document_ids": [
+        1
+      ],
+      "requires_citations": true
+    },
+    {
+      "id": "q005",
+      "group": "annual_leave",
+      "request": {
+        "question": "Is annual leave provided every year?",
+        "top_k": 5,
+        "category": "hr",
+        "document_id": null
+      },
+      "expected_status": "answered",
+      "expected_facts": [
+        "Employees receive 20 working days of annual leave each year."
+      ],
+      "relevant_document_ids": [
+        1
+      ],
+      "requires_citations": true
+    },
+    {
+      "id": "q006",
+      "group": "annual_leave",
+      "request": {
+        "question": "Tell me the number and type of annual leave days provided.",
+        "top_k": 5,
+        "category": "hr",
+        "document_id": null
+      },
+      "expected_status": "answered",
+      "expected_facts": [
+        "Employees receive 20 working days of annual leave each year."
+      ],
+      "relevant_document_ids": [
+        1
+      ],
+      "requires_citations": true
+    },
+    {
+      "id": "q007",
+      "group": "annual_leave",
+      "request": {
+        "question": "Do employees receive 20 working days of annual leave each year?",
+        "top_k": 5,
+        "category": "hr",
+        "document_id": null
+      },
+      "expected_status": "answered",
+      "expected_facts": [
+        "Employees receive 20 working days of annual leave each year."
+      ],
+      "relevant_document_ids": [
+        1
+      ],
+      "requires_citations": true
+    },
+    {
+      "id": "q008",
+      "group": "annual_leave",
+      "request": {
+        "question": "Do employees receive 25 working days of annual leave each year?",
+        "top_k": 5,
+        "category": "hr",
+        "document_id": null
+      },
+      "expected_status": "answered",
+      "expected_facts": [
+        "Employees receive 20 working days of annual leave each year."
+      ],
+      "relevant_document_ids": [
+        1
+      ],
+      "requires_citations": true
+    },
+    {
+      "id": "q009",
+      "group": "annual_leave",
+      "request": {
+        "question": "Hello, how many annual leave days do employees receive?",
+        "top_k": 5,
+        "category": "hr",
+        "document_id": null
+      },
+      "expected_status": "answered",
+      "expected_facts": [
+        "Employees receive 20 working days of annual leave each year."
+      ],
+      "relevant_document_ids": [
+        1
+      ],
+      "requires_citations": true
+    },
+    {
+      "id": "q010",
+      "group": "annual_leave",
+      "request": {
+        "question": "According to the leave policy, what is the annual entitlement?",
+        "top_k": 5,
+        "category": "hr",
+        "document_id": null
+      },
+      "expected_status": "answered",
+      "expected_facts": [
+        "Employees receive 20 working days of annual leave each year."
+      ],
+      "relevant_document_ids": [
+        1
+      ],
+      "requires_citations": true
+    },
+    {
+      "id": "q011",
+      "group": "remote_work",
+      "request": {
+        "question": "How many days per week may employees work remotely?",
+        "top_k": 5,
+        "category": "hr",
+        "document_id": null
+      },
+      "expected_status": "answered",
+      "expected_facts": [
+        "Employees may work remotely two days per week."
+      ],
+      "relevant_document_ids": [
+        2
+      ],
+      "requires_citations": true
+    },
+    {
+      "id": "q012",
+      "group": "remote_work",
+      "request": {
+        "question": "What approval is required for remote work?",
+        "top_k": 5,
+        "category": "hr",
+        "document_id": null
+      },
+      "expected_status": "answered",
+      "expected_facts": [
+        "Manager approval is required for remote work."
+      ],
+      "relevant_document_ids": [
+        2
+      ],
+      "requires_citations": true
+    },
+    {
+      "id": "q013",
+      "group": "remote_work",
+      "request": {
+        "question": "What is the remote work policy?",
+        "top_k": 5,
+        "category": "hr",
+        "document_id": null
+      },
+      "expected_status": "answered",
+      "expected_facts": [
+        "Employees may work remotely two days per week.",
+        "Manager approval is required."
+      ],
+      "relevant_document_ids": [
+        2
+      ],
+      "requires_citations": true
+    },
+    {
+      "id": "q014",
+      "group": "remote_work",
+      "request": {
+        "question": "Can employees work remotely two days per week?",
+        "top_k": 5,
+        "category": "hr",
+        "document_id": null
+      },
+      "expected_status": "answered",
+      "expected_facts": [
+        "Employees may work remotely two days per week.",
+        "Manager approval is required."
+      ],
+      "relevant_document_ids": [
+        2
+      ],
+      "requires_citations": true
+    },
+    {
+      "id": "q015",
+      "group": "remote_work",
+      "request": {
+        "question": "Does the policy permit three remote work days per week?",
+        "top_k": 5,
+        "category": "hr",
+        "document_id": null
+      },
+      "expected_status": "answered",
+      "expected_facts": [
+        "The policy permits two remote work days per week, not three."
+      ],
+      "relevant_document_ids": [
+        2
+      ],
+      "requires_citations": true
+    },
+    {
+      "id": "q016",
+      "group": "remote_work",
+      "request": {
+        "question": "Can employees work remotely without manager approval?",
+        "top_k": 5,
+        "category": "hr",
+        "document_id": null
+      },
+      "expected_status": "answered",
+      "expected_facts": [
+        "Manager approval is required for remote work."
+      ],
+      "relevant_document_ids": [
+        2
+      ],
+      "requires_citations": true
+    },
+    {
+      "id": "q017",
+      "group": "remote_work",
+      "request": {
+        "question": "Who must approve remote work?",
+        "top_k": 5,
+        "category": "hr",
+        "document_id": null
+      },
+      "expected_status": "answered",
+      "expected_facts": [
+        "The employee's manager must approve remote work."
+      ],
+      "relevant_document_ids": [
+        2
+      ],
+      "requires_citations": true
+    },
+    {
+      "id": "q018",
+      "group": "remote_work",
+      "request": {
+        "question": "What is the weekly remote work allowance?",
+        "top_k": 5,
+        "category": "hr",
+        "document_id": null
+      },
+      "expected_status": "answered",
+      "expected_facts": [
+        "Employees may work remotely two days per week."
+      ],
+      "relevant_document_ids": [
+        2
+      ],
+      "requires_citations": true
+    },
+    {
+      "id": "q019",
+      "group": "remote_work",
+      "request": {
+        "question": "Hello, what approval do I need to work remotely?",
+        "top_k": 5,
+        "category": "hr",
+        "document_id": null
+      },
+      "expected_status": "answered",
+      "expected_facts": [
+        "Manager approval is required for remote work."
+      ],
+      "relevant_document_ids": [
+        2
+      ],
+      "requires_citations": true
+    },
+    {
+      "id": "q020",
+      "group": "remote_work",
+      "request": {
+        "question": "State both the remote work limit and the approval requirement.",
+        "top_k": 5,
+        "category": "hr",
+        "document_id": null
+      },
+      "expected_status": "answered",
+      "expected_facts": [
+        "Employees may work remotely two days per week.",
+        "Manager approval is required."
+      ],
+      "relevant_document_ids": [
+        2
+      ],
+      "requires_citations": true
+    },
+    {
+      "id": "q021",
+      "group": "training_budget",
+      "request": {
+        "question": "What is the maximum annual training claim?",
+        "top_k": 5,
+        "category": "hr",
+        "document_id": null
+      },
+      "expected_status": "answered",
+      "expected_facts": [
+        "Employees may claim up to INR 10000 per year."
+      ],
+      "relevant_document_ids": [
+        6
+      ],
+      "requires_citations": true
+    },
+    {
+      "id": "q022",
+      "group": "training_budget",
+      "request": {
+        "question": "What currency is used for the training budget?",
+        "top_k": 5,
+        "category": "hr",
+        "document_id": null
+      },
+      "expected_status": "answered",
+      "expected_facts": [
+        "The training budget is stated in INR."
+      ],
+      "relevant_document_ids": [
+        6
+      ],
+      "requires_citations": true
+    },
+    {
+      "id": "q023",
+      "group": "training_budget",
+      "request": {
+        "question": "Who must approve a training course?",
+        "top_k": 5,
+        "category": "hr",
+        "document_id": null
+      },
+      "expected_status": "answered",
+      "expected_facts": [
+        "Manager approval is required."
+      ],
+      "relevant_document_ids": [
+        6
+      ],
+      "requires_citations": true
+    },
+    {
+      "id": "q024",
+      "group": "training_budget",
+      "request": {
+        "question": "When must training approval be obtained?",
+        "top_k": 5,
+        "category": "hr",
+        "document_id": null
+      },
+      "expected_status": "answered",
+      "expected_facts": [
+        "Manager approval is required before enrollment."
+      ],
+      "relevant_document_ids": [
+        6
+      ],
+      "requires_citations": true
+    },
+    {
+      "id": "q025",
+      "group": "training_budget",
+      "request": {
+        "question": "Can employees claim training expenses for any course?",
+        "top_k": 5,
+        "category": "hr",
+        "document_id": null
+      },
+      "expected_status": "answered",
+      "expected_facts": [
+        "Training claims apply to approved training courses."
+      ],
+      "relevant_document_ids": [
+        6
+      ],
+      "requires_citations": true
+    },
+    {
+      "id": "q026",
+      "group": "training_budget",
+      "request": {
+        "question": "Does the policy allow an annual training claim of INR 15000?",
+        "top_k": 5,
+        "category": "hr",
+        "document_id": null
+      },
+      "expected_status": "answered",
+      "expected_facts": [
+        "The annual training claim limit is INR 10000, not INR 15000."
+      ],
+      "relevant_document_ids": [
+        6
+      ],
+      "requires_citations": true
+    },
+    {
+      "id": "q027",
+      "group": "training_budget",
+      "request": {
+        "question": "Is the INR 10000 training allowance monthly or yearly?",
+        "top_k": 5,
+        "category": "hr",
+        "document_id": null
+      },
+      "expected_status": "answered",
+      "expected_facts": [
+        "The INR 10000 training claim limit applies per year."
+      ],
+      "relevant_document_ids": [
+        6
+      ],
+      "requires_citations": true
+    },
+    {
+      "id": "q028",
+      "group": "training_budget",
+      "request": {
+        "question": "Can I enroll first and obtain manager approval afterward?",
+        "top_k": 5,
+        "category": "hr",
+        "document_id": null
+      },
+      "expected_status": "answered",
+      "expected_facts": [
+        "Manager approval is required before enrollment."
+      ],
+      "relevant_document_ids": [
+        6
+      ],
+      "requires_citations": true
+    },
+    {
+      "id": "q029",
+      "group": "training_budget",
+      "request": {
+        "question": "What is the annual training budget and what approval is required?",
+        "top_k": 5,
+        "category": "hr",
+        "document_id": null
+      },
+      "expected_status": "answered",
+      "expected_facts": [
+        "Employees may claim up to INR 10000 per year for approved training courses.",
+        "Manager approval is required before enrollment."
+      ],
+      "relevant_document_ids": [
+        6
+      ],
+      "requires_citations": true
+    },
+    {
+      "id": "q030",
+      "group": "training_budget",
+      "request": {
+        "question": "Hello, summarize the training reimbursement policy.",
+        "top_k": 5,
+        "category": "hr",
+        "document_id": null
+      },
+      "expected_status": "answered",
+      "expected_facts": [
+        "Employees may claim up to INR 10000 per year for approved training courses.",
+        "Manager approval is required before enrollment."
+      ],
+      "relevant_document_ids": [
+        6
+      ],
+      "requires_citations": true
+    },
+    {
+      "id": "q031",
+      "group": "missing_evidence",
+      "request": {
+        "question": "What is the company's laptop replacement policy?",
+        "top_k": 5,
+        "category": "hr",
+        "document_id": 1
+      },
+      "expected_status": "abstained",
+      "expected_facts": [],
+      "relevant_document_ids": [],
+      "requires_citations": false
+    },
+    {
+      "id": "q032",
+      "group": "missing_evidence",
+      "request": {
+        "question": "What is the office Wi-Fi password?",
+        "top_k": 5,
+        "category": "hr",
+        "document_id": 1
+      },
+      "expected_status": "abstained",
+      "expected_facts": [],
+      "relevant_document_ids": [],
+      "requires_citations": false
+    },
+    {
+      "id": "q033",
+      "group": "missing_evidence",
+      "request": {
+        "question": "How many sick leave days do employees receive?",
+        "top_k": 5,
+        "category": "hr",
+        "document_id": 1
+      },
+      "expected_status": "abstained",
+      "expected_facts": [],
+      "relevant_document_ids": [],
+      "requires_citations": false
+    },
+    {
+      "id": "q034",
+      "group": "missing_evidence",
+      "request": {
+        "question": "Can unused annual leave be carried forward?",
+        "top_k": 5,
+        "category": "hr",
+        "document_id": 1
+      },
+      "expected_status": "abstained",
+      "expected_facts": [],
+      "relevant_document_ids": [],
+      "requires_citations": false
+    },
+    {
+      "id": "q035",
+      "group": "missing_evidence",
+      "request": {
+        "question": "What is the company's maternity leave entitlement?",
+        "top_k": 5,
+        "category": "hr",
+        "document_id": 1
+      },
+      "expected_status": "abstained",
+      "expected_facts": [],
+      "relevant_document_ids": [],
+      "requires_citations": false
+    },
+    {
+      "id": "q036",
+      "group": "missing_evidence",
+      "request": {
+        "question": "What is the employee notice period?",
+        "top_k": 5,
+        "category": "hr",
+        "document_id": 1
+      },
+      "expected_status": "abstained",
+      "expected_facts": [],
+      "relevant_document_ids": [],
+      "requires_citations": false
+    },
+    {
+      "id": "q037",
+      "group": "missing_evidence",
+      "request": {
+        "question": "What health insurance coverage do employees receive?",
+        "top_k": 5,
+        "category": "hr",
+        "document_id": 1
+      },
+      "expected_status": "abstained",
+      "expected_facts": [],
+      "relevant_document_ids": [],
+      "requires_citations": false
+    },
+    {
+      "id": "q038",
+      "group": "missing_evidence",
+      "request": {
+        "question": "When are employee salaries paid?",
+        "top_k": 5,
+        "category": "hr",
+        "document_id": 1
+      },
+      "expected_status": "abstained",
+      "expected_facts": [],
+      "relevant_document_ids": [],
+      "requires_citations": false
+    },
+    {
+      "id": "q039",
+      "group": "missing_evidence",
+      "request": {
+        "question": "Who is the head of the IT department?",
+        "top_k": 5,
+        "category": "hr",
+        "document_id": 1
+      },
+      "expected_status": "abstained",
+      "expected_facts": [],
+      "relevant_document_ids": [],
+      "requires_citations": false
+    },
+    {
+      "id": "q040",
+      "group": "missing_evidence",
+      "request": {
+        "question": "What is the business travel meal reimbursement limit?",
+        "top_k": 5,
+        "category": "hr",
+        "document_id": 1
+      },
+      "expected_status": "abstained",
+      "expected_facts": [],
+      "relevant_document_ids": [],
+      "requires_citations": false
+    },
+    {
+      "id": "q041",
+      "group": "filter_exclusion",
+      "request": {
+        "question": "How many annual leave days do employees receive?",
+        "top_k": 5,
+        "category": "it",
+        "document_id": 1
+      },
+      "expected_status": "abstained",
+      "expected_facts": [],
+      "relevant_document_ids": [],
+      "requires_citations": false
+    },
+    {
+      "id": "q042",
+      "group": "filter_exclusion",
+      "request": {
+        "question": "What is the yearly annual leave entitlement?",
+        "top_k": 5,
+        "category": "finance",
+        "document_id": 1
+      },
+      "expected_status": "abstained",
+      "expected_facts": [],
+      "relevant_document_ids": [],
+      "requires_citations": false
+    },
+    {
+      "id": "q043",
+      "group": "filter_exclusion",
+      "request": {
+        "question": "How many days per week may employees work remotely?",
+        "top_k": 5,
+        "category": "it",
+        "document_id": 2
+      },
+      "expected_status": "abstained",
+      "expected_facts": [],
+      "relevant_document_ids": [],
+      "requires_citations": false
+    },
+    {
+      "id": "q044",
+      "group": "filter_exclusion",
+      "request": {
+        "question": "Who must approve remote work?",
+        "top_k": 5,
+        "category": "general",
+        "document_id": 2
+      },
+      "expected_status": "abstained",
+      "expected_facts": [],
+      "relevant_document_ids": [],
+      "requires_citations": false
+    },
+    {
+      "id": "q045",
+      "group": "filter_exclusion",
+      "request": {
+        "question": "What is the maximum annual training claim?",
+        "top_k": 5,
+        "category": "finance",
+        "document_id": 6
+      },
+      "expected_status": "abstained",
+      "expected_facts": [],
+      "relevant_document_ids": [],
+      "requires_citations": false
+    },
+    {
+      "id": "q046",
+      "group": "greeting",
+      "request": {
+        "question": "Hello",
+        "top_k": 5,
+        "category": null,
+        "document_id": null
+      },
+      "expected_status": "direct_answer",
+      "expected_facts": [],
+      "relevant_document_ids": [],
+      "requires_citations": false
+    },
+    {
+      "id": "q047",
+      "group": "greeting",
+      "request": {
+        "question": "hello",
+        "top_k": 5,
+        "category": null,
+        "document_id": null
+      },
+      "expected_status": "direct_answer",
+      "expected_facts": [],
+      "relevant_document_ids": [],
+      "requires_citations": false
+    },
+    {
+      "id": "q048",
+      "group": "greeting",
+      "request": {
+        "question": "HELLO",
+        "top_k": 5,
+        "category": null,
+        "document_id": null
+      },
+      "expected_status": "direct_answer",
+      "expected_facts": [],
+      "relevant_document_ids": [],
+      "requires_citations": false
+    },
+    {
+      "id": "q049",
+      "group": "greeting",
+      "request": {
+        "question": "Hello!",
+        "top_k": 5,
+        "category": null,
+        "document_id": null
+      },
+      "expected_status": "direct_answer",
+      "expected_facts": [],
+      "relevant_document_ids": [],
+      "requires_citations": false
+    },
+    {
+      "id": "q050",
+      "group": "greeting",
+      "request": {
+        "question": "Hello.",
+        "top_k": 5,
+        "category": null,
+        "document_id": null
+      },
+      "expected_status": "direct_answer",
+      "expected_facts": [],
+      "relevant_document_ids": [],
+      "requires_citations": false
+    }
+  ]
+}

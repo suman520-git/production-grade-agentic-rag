@@ -1,0 +1,116 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+      POSTGRES_DB: ${POSTGRES_DB}
+
+    ports:
+      - "127.0.0.1:${POSTGRES_PORT}:5432"
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - pg_isready -U "$$POSTGRES_USER" -d "$$POSTGRES_DB"
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  qdrant:
+    image: qdrant/qdrant:v1.19.1
+    restart: unless-stopped
+
+    ports:
+      - "127.0.0.1:6333:6333"
+
+    volumes:
+      - qdrant_data:/qdrant/storage
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    restart: unless-stopped
+    init: true
+
+    env_file:
+      - .env
+
+    environment:
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: "5432"
+      QDRANT_URL: http://qdrant:6333
+      CORS_ORIGINS: '["http://localhost:8502","http://127.0.0.1:8502"]'
+
+    command:
+      - /bin/sh
+      - -c
+      - >-
+        python -m backend.bootstrap &&
+        exec python -m uvicorn backend.main:app
+        --host 0.0.0.0
+        --port 8000
+        --workers 1
+
+    ports:
+      - "127.0.0.1:8000:8000"
+
+    depends_on:
+      postgres:
+        condition: service_healthy
+      qdrant:
+        condition: service_started
+
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -m
+        - backend.container_healthcheck
+      interval: 30s
+      timeout: 15s
+      retries: 3
+      start_period: 90s
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    restart: unless-stopped
+    init: true
+
+    environment:
+      API_BASE_URL: http://backend:8000
+      STREAMLIT_BROWSER_GATHER_USAGE_STATS: "false"
+
+    command:
+      - python
+      - -m
+      - streamlit
+      - run
+      - frontend/app.py
+      - --server.address
+      - 0.0.0.0
+      - --server.port
+      - "8501"
+      - --server.headless
+      - "true"
+
+    ports:
+      - "127.0.0.1:8502:8501"
+
+    depends_on:
+      backend:
+        condition: service_healthy
+
+volumes:
+  postgres_data:
+  qdrant_data:
