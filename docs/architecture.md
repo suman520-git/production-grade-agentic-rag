@@ -121,3 +121,36 @@ It measures original-query hybrid retrieval separately from the
 full /chat workflow.
 
 See [the evaluation report](evaluation_report.md).
+
+
+
+
+## AWS deployment configuration
+
+One EC2 instance runs Streamlit, FastAPI, PostgreSQL, and Qdrant.
+
+On EC2, the backend's published port is:
+
+```yaml
+ports:
+  - "8000:8000"
+```
+
+The frontend's published port is:
+
+```yaml
+ports:
+  - "8502:8501"
+```
+
+PostgreSQL and Qdrant retain their loopback-only host mappings.
+
+The EC2 security group allows:
+- TCP 22 from the administrator's IP.
+- TCP 8000 and 8502 from Anywhere-IPv4.
+
+Streamlit connects internally to http://backend:8000.
+The backend connects internally to postgres:5432 and qdrant:6333.
+
+No reverse proxy or HTTPS termination is configured.
+Database data persists in Docker named volumes on the EC2 disk.

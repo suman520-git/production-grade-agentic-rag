@@ -1,4 +1,4 @@
-# Project Submission
+# Final Submission
 
 Student Name: Vemula Suman
 
@@ -7,27 +7,42 @@ Project Name: Production-Grade Agentic RAG Capstone
 GitHub Repository:
 https://github.com/suman520-git/production-grade-agentic-rag
 
-AWS Link: Pending manual deployment
+AWS Application:
+http://65.1.108.31:8502
 
-FastAPI Swagger Link: Pending manual deployment
+FastAPI Swagger:
+http://65.1.108.31:8000/docs
 
-## Deliverables
+Architecture Diagram: [Architecture](architecture.md)
 
-- [Architecture diagrams](architecture.md)
-- [Database schema explanation](database_schema.md)
-- [Exported PostgreSQL schema](database_schema.sql)
-- [Evaluation report](evaluation_report.md)
-- [Setup instructions](../README.md)
+Database Schema: [Schema](database_schema.md)
+
+SQL Schema: [SQL](database_schema.sql)
+
+Evaluation Report: [Report](evaluation_report.md)
 
 ## Evaluation result
 
-The final development regression run passed 50 of 50 automated cases.
+The final local evaluation run passed 50/50 questions.
+This result applies to the project's fixed evaluation dataset.
+AWS deployment was checked separately using document ingestion,
+a cited answer, an unsupported question, and the readiness endpoint.
 
-Earlier runs passed 47 and 49 cases respectively.
-See the evaluation report for methodology and limitations.
+## Access
 
-## Deployment
+Enter the deployment's application API key in Streamlit.
+For Swagger, use the Authorize button.
 
-The application currently runs locally using Docker Compose.
-Public AWS and Swagger links will be recorded after manual deployment
-and verification.
+The API key is provided separately to the evaluator and is not
+included in this repository.
+
+## Deployment limitations
+
+This capstone deployment uses public HTTP without TLS.
+Use sample documents only.
+
+The application runs on one EC2 instance.
+Its public IP may change after stopping and starting the instance.
+Update the submission links if that happens.
+
+Screenshots are omitted.

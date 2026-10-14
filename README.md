@@ -184,6 +184,15 @@ Manual AWS deployment is pending.
 AWS application and API documentation links will be added after
 deployment and verification.
 
+## AWS deployment
+
+- Application: http://65.1.108.31:8502
+- API documentation: http://65.1.108.31:8000/docs
+- Deployment method: manual AWS EC2 deployment with Docker Compose.
+- Submission details: [docs/submission.md](docs/submission.md)
+
+An application API key is required for protected operations.
+This demonstration uses HTTP without TLS and sample data only.
 
 ## Project documentation
 
