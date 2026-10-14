@@ -183,3 +183,13 @@ Raw evaluation runs are saved locally under `evaluations/`.
 Manual AWS deployment is pending.
 AWS application and API documentation links will be added after
 deployment and verification.
+
+
+## Project documentation
+
+- [Architecture](docs/architecture.md)
+- [Database schema](docs/database_schema.md)
+- [SQL schema export](docs/database_schema.sql)
+- [Evaluation report](docs/evaluation_report.md)
+
+- [Submission details](docs/submission.md)
